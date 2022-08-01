@@ -14,12 +14,12 @@ class pencere(QWidget):
         self.sayılar = '0123456789'
         self.ozelkarakter = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
         self.sifre =""
-        self.kontrol = QCheckBox('Özel Karakter olsun mu ?')
-        self.basamak1 = QtWidgets.QLabel('Şifre Kaç Basamaklı olsun ?')
+        self.kontrol = QCheckBox('Özel Karakter olsun mu?')
+        self.basamak1 = QtWidgets.QLabel('Şifre Kaç Basamaklı olsun?')
         self.basamak = QtWidgets.QLineEdit()
         self.buton = QPushButton('Şifreyi oluştur!')
         self.parola_alanı = QtWidgets.QLineEdit()
-        self.sahip = QtWidgets.QLabel("#Alparslan Adalı saygıyla Sunar.... 07.2022")
+        self.sahip = QtWidgets.QLabel("#Alparslan Adalı Saygıyla Sunar.... 07.2022")
         v_box = QVBoxLayout()
         v_box.addWidget(self.kontrol)
         v_box.addWidget(self.basamak1)
@@ -33,19 +33,23 @@ class pencere(QWidget):
         self.show()
 
     def click(self,kontrol,basamak,parola_alanı,sifre,sayılar,harfler,ozelkarakter):
-        basamakx = int(basamak.text())
-        Baskı = ''
-        if kontrol:
-            for i in range(0, basamakx):
-                sifre =random.choice(harfler+sayılar+ozelkarakter)
-                Baskı= Baskı+sifre
+        try:
+            basamakx = int(basamak.text())
+            if basamakx == 0 :
+                pass
+            Baskı = ''
+            if kontrol:
+                for i in range(0, basamakx):
+                    sifre =random.choice(random.choice(harfler)+random.choice(sayılar)+random.choice(ozelkarakter))
+                    Baskı= Baskı+sifre
 
-        else:
-            for i in range(0, basamakx):
-                sifre =random.choice(harfler+sayılar)
-                Baskı = Baskı + sifre
-        parola_alanı.setText(Baskı)
-
+            else:
+                for i in range(0, basamakx):
+                    sifre =random.choice(random.choice(harfler)+random.choice(sayılar))
+                    Baskı = Baskı + sifre
+            parola_alanı.setText(Baskı)
+        except:
+            pass
 app = QApplication(sys.argv)
 pencere = pencere()
 sys.exit(app.exec_())
