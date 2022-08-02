@@ -35,8 +35,6 @@ class pencere(QWidget):
     def click(self,kontrol,basamak,parola_alanı,sifre,sayılar,harfler,ozelkarakter):
         try:
             basamakx = int(basamak.text())
-            if basamakx == 0 :
-                pass
             Baskı = ''
             if kontrol:
                 for i in range(0, basamakx):
